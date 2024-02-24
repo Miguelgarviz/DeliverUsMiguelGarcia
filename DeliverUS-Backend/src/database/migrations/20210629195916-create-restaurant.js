@@ -36,6 +36,15 @@ module.exports = {
           key: 'id'
         }
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users'
+          },
+          key: 'id'
+        }
+      },
       shippingCosts: {
         allowNull: false,
         type: Sequelize.DOUBLE

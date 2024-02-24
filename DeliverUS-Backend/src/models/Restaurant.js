@@ -28,7 +28,94 @@ const loadModel = (sequelize, DataTypes) => {
   }
   Restaurant.init({
     // TODO: Include the rest of the properties of the Restaurant model
-
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    name: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    description: {
+      allowNull: true,
+      type: DataTypes.TEXT
+    },
+    address: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    postalCode: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    url: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: {
+          tableName: 'Users'
+        },
+        key: 'id'
+      }
+    },
+    restaurantCategoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: {
+          tableName: 'RestaurantCategories'
+        },
+        key: 'id'
+      }
+    },
+    shippingCosts: {
+      allowNull: false,
+      type: DataTypes.DOUBLE
+    },
+    averangeServiceMinutes: {
+      allowNull: true,
+      type: DataTypes.DOUBLE
+    },
+    email: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    phone: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    logo: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    heroImage: {
+      allowNull: true,
+      type: DataTypes.STRING
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    },
+    status: {
+      allowNull: false,
+      type: DataTypes.ENUM,
+      values: [
+        'online',
+        'offline',
+        'closed',
+        'temporarily closed'
+      ]
+    }
   }, {
     sequelize,
     modelName: 'Restaurant'
