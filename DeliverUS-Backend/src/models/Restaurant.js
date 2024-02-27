@@ -76,9 +76,12 @@ const loadModel = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DOUBLE
     },
-    averangeServiceMinutes: {
+    averageServiceMinutes: {
       allowNull: true,
-      type: DataTypes.DOUBLE
+      type: DataTypes.DOUBLE,
+      set () {
+        return this.getAverageServiceTime()
+      }
     },
     email: {
       allowNull: true,

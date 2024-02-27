@@ -49,7 +49,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DOUBLE
       },
-      averangeServiceMinutes: {
+      averageServiceMinutes: {
         allowNull: true,
         type: Sequelize.DOUBLE
       },
